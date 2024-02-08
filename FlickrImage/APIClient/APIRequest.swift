@@ -51,13 +51,14 @@ extension APIRequest: CustomStringConvertible {
 }
 
 extension APIRequest {
-    func makeRequest(using baseURL: URL) throws -> URLRequest {
-        guard var components = URLComponents(url: baseURL, resolvingAgainstBaseURL: true) else {
+    func makeRequest(using environment: AppEnvironment) throws -> URLRequest {
+        guard var components = URLComponents(url: environment.baseURL, resolvingAgainstBaseURL: true) else {
             throw URLError(.badURL)
         }
         components.path = path.isEmpty ? "" : components.path + path.replacingOccurrences(of: " ", with: "%20")
-
         components.queryItems = query?.compactMap { URLQueryItem(name: $0.0, value: $0.1) }
+
+        components.appendBaseQueryItems(with: environment)
 
         guard let url = components.url else {
             throw URLError(.unsupportedURL)
@@ -79,5 +80,15 @@ extension APIRequest {
             urlRequest.setValue(value.description, forHTTPHeaderField: key)
         }
         return urlRequest
+    }
+}
+
+extension URLComponents {
+    mutating func appendBaseQueryItems(with environment: AppEnvironment) {
+        queryItems = (queryItems ?? []) + [
+            URLQueryItem(name: "format", value: "json"),
+            URLQueryItem(name: "nojsoncallback", value: "1"),
+            URLQueryItem(name: "api_key", value: environment.apiKey),
+        ]
     }
 }

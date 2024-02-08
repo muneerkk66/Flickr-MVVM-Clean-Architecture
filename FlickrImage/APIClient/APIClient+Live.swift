@@ -15,7 +15,7 @@ final class APIClientLive: APIClient {
 
     func request<Response>(_ request: APIRequest<Response>) -> AnyPublisher<Response, APIError> {
         do {
-            let urlRequest = try request.makeRequest(using: apiEnvironment.environment.baseURL)
+            let urlRequest = try request.makeRequest(using: apiEnvironment.environment)
             print("Making API request:\n\(urlRequest)")
             return URLSession.shared.dataTaskPublisher(for: urlRequest)
                 .mapError { error in APIError.serverError(error)

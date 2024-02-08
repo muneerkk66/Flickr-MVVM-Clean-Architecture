@@ -10,30 +10,34 @@ import Dependencies
 import Foundation
 
 final class FlickrServiceLive {
-	@Dependency(\.apiClient) private var apiClient
-	@Dependency(\.apiEnvironment) private var apiEnvirorment
+    @Dependency(\.apiClient) private var apiClient
 
-	private enum Endpoint {
-		case fetchPhotos
-		var path: String {
-			switch self {
-			case .fetchPhotos:
-				return "/services/rest/?method=flickr.photos.search&format=json"
-			}
-		}
-	}
+    private enum Endpoint {
+        case fetchPhotos
+        var path: String {
+            switch self {
+            case .fetchPhotos:
+                return "/services/rest/"
+            }
+        }
+    }
 }
 
 extension FlickrServiceLive: FlickrService {
-	func fetchPhotos(
-		withText name: String
-	) -> AnyPublisher<PhotosResponse, APIError> {
-		let parms = [PhotosRequestQuery.text: name]
-		let fetchPhotosRequest = APIRequest<PhotosResponse>(
-			path: Self.Endpoint.fetchPhotos.path,
-			query: parms
-		)
-		return apiClient.request(fetchPhotosRequest)
-	}
-}
+    func fetchPhotos(
+        withText name: String, page: Int
+    ) -> AnyPublisher<PhotosResponse, APIError> {
+        let parms = [
+            AppConstants.PhotosRequestQuery.text: name,
+            AppConstants.PhotosRequestQuery.page: String(page),
+            AppConstants.PhotosRequestQuery.method: AppConstants.photosRequestMethod,
+            // AppConstants.PhotosRequestQuery.perPage: AppConstants.pageLimit,
+        ]
 
+        let fetchPhotosRequest = APIRequest<PhotosResponse>(
+            path: Self.Endpoint.fetchPhotos.path,
+            query: parms
+        )
+        return apiClient.request(fetchPhotosRequest)
+    }
+}

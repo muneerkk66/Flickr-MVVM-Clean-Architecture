@@ -1,5 +1,5 @@
 //
-//  Environment.swift
+//  AppEnvironment.swift
 //  FlickrImage
 //
 //  Created by Muneer K K on 08/02/2024.
