@@ -15,9 +15,9 @@ protocol APIEnvironment {
 
 private struct APIEnvironmentKey: DependencyKey {
     #if PRODUCTION
-        static let liveValue: APIEnvironment = APIEnvironmentLive(currentEnvironment: .production)
+    static let liveValue: APIEnvironment = APIEnvironmentLive(currentEnvironment: .production)
     #else
-        static let liveValue: APIEnvironment = APIEnvironmentLive(currentEnvironment: .development)
+    static let liveValue: APIEnvironment = APIEnvironmentLive(currentEnvironment: .development)
     #endif
 }
 

@@ -14,7 +14,7 @@ struct PhotoGridView: View {
         ScrollView {
             LazyVGrid(columns: [
                 .init(.adaptive(minimum: 100, maximum: .infinity), spacing: 3),
-                .init(.adaptive(minimum: 100, maximum: .infinity), spacing: 3),
+                .init(.adaptive(minimum: 100, maximum: .infinity), spacing: 3)
             ], spacing: 3) {
                 ForEach(viewModel.photos, id: \.id) { photo in
                     PhotoView(url: photo.url)

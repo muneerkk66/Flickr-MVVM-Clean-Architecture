@@ -8,7 +8,6 @@
 import Combine
 import Dependencies
 import Foundation
-import Foundation
 
 final class APIClientLive: APIClient {
     @Dependency(\.apiEnvironment) private var apiEnvironment

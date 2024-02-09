@@ -40,7 +40,6 @@ final class HomeViewModel: ObservableObject {
                 self.page = 1
                 self.fetchPhotos(seachText: text)
             }
-
             .store(in: &disposables)
     }
 
@@ -69,10 +68,22 @@ final class HomeViewModel: ObservableObject {
                 }
             }, receiveValue: { [weak self] results in
                 guard let self = self else { return }
+
                 photos.append(contentsOf: results.photos)
                 self.page += 1
                 self.state = (results.photos.count >= AppConstants.pageLimit) ? .good : .loadedAll
+
+                saveSearchHistory(text: seachText)
             })
             .store(in: &disposables)
+    }
+
+    // TODO: This can be moved to Repository level to maintain the data seperation.
+
+    func saveSearchHistory(text: String) {
+        let history = Item(context: PersistenceController.shared.container.viewContext)
+        history.searchText = text
+        history.timestamp = Date()
+        PersistenceController.shared.save()
     }
 }

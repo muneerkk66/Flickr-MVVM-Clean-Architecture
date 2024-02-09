@@ -40,11 +40,11 @@ struct APIRequest<Response: Decodable> {
 extension APIRequest: CustomStringConvertible {
     var description: String {
         """
-        	Request(
-        	path: \(path),
-        	query: \(query ?? [:]),
-        	method: \(method),
-        	headers: \(headers?.mapValues { $0.description.localizedCaseInsensitiveContains("Bearer") ? "***" : $0 } ?? [:])
+            Request(
+            path: \(path),
+            query: \(query ?? [:]),
+            method: \(method),
+            headers: \(headers?.mapValues { $0.description.localizedCaseInsensitiveContains("Bearer") ? "***" : $0 } ?? [:])
         )
         """
     }
@@ -88,7 +88,7 @@ extension URLComponents {
         queryItems = (queryItems ?? []) + [
             URLQueryItem(name: "format", value: "json"),
             URLQueryItem(name: "nojsoncallback", value: "1"),
-            URLQueryItem(name: "api_key", value: environment.apiKey),
+            URLQueryItem(name: "api_key", value: environment.apiKey)
         ]
     }
 }

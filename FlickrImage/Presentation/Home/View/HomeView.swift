@@ -16,10 +16,12 @@ struct HomeView: View {
                 .navigationTitle("Photos")
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
-                        Button(action: {
-                            // Handle action when the right button is tapped
-                        }) {
+                        NavigationLink(value: "Item") {
                             Image(systemName: "clock")
+                        }.navigationDestination(for: String.self) { view in
+                            if view == "Item" {
+                                HistoryView()
+                            }
                         }
                     }
                 }
