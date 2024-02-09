@@ -32,4 +32,6 @@ struct HomeView: View {
 
 #Preview {
     HomeView()
+        .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        .previewLayout(.fixed(width: 375, height: 667)) // Set
 }

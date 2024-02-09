@@ -26,7 +26,6 @@
 		0845C82D2B74F95B0079EAAB /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0845C82C2B74F95B0079EAAB /* APIError.swift */; };
 		0845C8302B74FBFC0079EAAB /* Dependencies in Frameworks */ = {isa = PBXBuildFile; productRef = 0845C82F2B74FBFC0079EAAB /* Dependencies */; };
 		0845C8352B75005D0079EAAB /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0845C8342B75005D0079EAAB /* Parser.swift */; };
-		0845C8372B7505D00079EAAB /* FlickrServiceLiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0845C8362B7505D00079EAAB /* FlickrServiceLiveTests.swift */; };
 		0845C8392B7508430079EAAB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0845C8382B7508430079EAAB /* HomeView.swift */; };
 		0845C83B2B7508830079EAAB /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0845C83A2B7508830079EAAB /* HomeViewModel.swift */; };
 		0845C84A2B7540420079EAAB /* PhotosResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0845C8492B7540420079EAAB /* PhotosResult.swift */; };
@@ -82,7 +81,6 @@
 		0845C82A2B74F8BF0079EAAB /* PhotosResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosResponse.swift; sourceTree = "<group>"; };
 		0845C82C2B74F95B0079EAAB /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		0845C8342B75005D0079EAAB /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
-		0845C8362B7505D00079EAAB /* FlickrServiceLiveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrServiceLiveTests.swift; sourceTree = "<group>"; };
 		0845C8382B7508430079EAAB /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		0845C83A2B7508830079EAAB /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		0845C8492B7540420079EAAB /* PhotosResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosResult.swift; sourceTree = "<group>"; };
@@ -174,7 +172,6 @@
 			isa = PBXGroup;
 			children = (
 				0845C7B72B74E7520079EAAB /* FlickrImageTests.swift */,
-				0845C8362B7505D00079EAAB /* FlickrServiceLiveTests.swift */,
 				0845C85F2B7594790079EAAB /* HomeViewModelTests.swift */,
 			);
 			path = FlickrImageTests;
@@ -396,6 +393,8 @@
 				0845C7B52B74E7520079EAAB /* PBXTargetDependency */,
 			);
 			name = FlickrImageTests;
+			packageProductDependencies = (
+			);
 			productName = FlickrImageTests;
 			productReference = 0845C7B32B74E7520079EAAB /* FlickrImageTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -414,6 +413,8 @@
 				0845C7BF2B74E7520079EAAB /* PBXTargetDependency */,
 			);
 			name = FlickrImageUITests;
+			packageProductDependencies = (
+			);
 			productName = FlickrImageUITests;
 			productReference = 0845C7BD2B74E7520079EAAB /* FlickrImageUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -452,6 +453,7 @@
 			mainGroup = 0845C7952B74E7510079EAAB;
 			packageReferences = (
 				0845C81C2B74F13F0079EAAB /* XCRemoteSwiftPackageReference "swift-dependencies" */,
+				0845C8D42B762C870079EAAB /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 			);
 			productRefGroup = 0845C79F2B74E7510079EAAB /* Products */;
 			projectDirPath = "";
@@ -528,7 +530,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0845C8372B7505D00079EAAB /* FlickrServiceLiveTests.swift in Sources */,
 				0845C8602B7594790079EAAB /* HomeViewModelTests.swift in Sources */,
 				0845C7B82B74E7520079EAAB /* FlickrImageTests.swift in Sources */,
 			);
@@ -862,6 +863,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.2.1;
+			};
+		};
+		0845C8D42B762C870079EAAB /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.15.3;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
