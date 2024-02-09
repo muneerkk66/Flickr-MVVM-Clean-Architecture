@@ -41,6 +41,7 @@
 		0845C8872B75ADB40079EAAB /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0845C8862B75ADB40079EAAB /* Persistence.swift */; };
 		0845C8CC2B75C2A10079EAAB /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0845C8CB2B75C2A10079EAAB /* DateFormatter.swift */; };
 		0845C8E22B763FE00079EAAB /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 0845C8E12B763FE00079EAAB /* README.md */; };
+		08FAE90C2B7695E900FC9FFE /* MockPhotoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAE90B2B7695E900FC9FFE /* MockPhotoResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		0845C8862B75ADB40079EAAB /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		0845C8CB2B75C2A10079EAAB /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		0845C8E12B763FE00079EAAB /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		08FAE90B2B7695E900FC9FFE /* MockPhotoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPhotoResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 		0845C7B62B74E7520079EAAB /* FlickrAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				08FAE90A2B7695C600FC9FFE /* Mock */,
 				0845C7B72B74E7520079EAAB /* FlickrAppTests.swift */,
 				0845C85F2B7594790079EAAB /* HomeViewModelTests.swift */,
 			);
@@ -359,6 +362,14 @@
 			path = History;
 			sourceTree = "<group>";
 		};
+		08FAE90A2B7695C600FC9FFE /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				08FAE90B2B7695E900FC9FFE /* MockPhotoResponse.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -535,6 +546,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0845C8602B7594790079EAAB /* HomeViewModelTests.swift in Sources */,
+				08FAE90C2B7695E900FC9FFE /* MockPhotoResponse.swift in Sources */,
 				0845C7B82B74E7520079EAAB /* FlickrAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

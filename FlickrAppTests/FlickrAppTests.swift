@@ -5,7 +5,7 @@
 //  Created by Muneer K K on 08/02/2024.
 //
 
-@testable import FlickrImage
+@testable import FlickrApp
 import XCTest
 
 final class FlickrAppTests: XCTestCase {
