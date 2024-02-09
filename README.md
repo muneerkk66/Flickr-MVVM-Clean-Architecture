@@ -12,6 +12,7 @@ Discover stunning photos from around the world with the Flickr Photos app. Effor
 	- [swift-depedendencies](https://github.com/pointfreeco/swift-dependencies): A dependency management library inspired by SwiftUI's "environment."
 ### Project Setup
 1. Clone the repository.
+2. Finally, navigate to the root folder run Xcode
 <br><br>
 
 ## How to use app
@@ -43,6 +44,7 @@ iOS Project implemented with Clean Layered Architecture and MVVM.
 1. Improve unit test coverage.
 2. Move presistance layer into Repository level in order to uphold data separation.
 3. Add snapshot testing using [Snapshot-Testing]https://github.com/pointfreeco/swift-snapshot-testing
+4. Add logging and error handling
 
 ### Tools
  1. - [Arkana](https://github.com/rogerluan/arkana) is used to handle/manage/store project keys secretely.
