@@ -24,7 +24,6 @@ struct Photo: Decodable {
     let secret: String
     let server: String
     let farm: Int
-    let title: String?
 }
 
 extension Photo {
@@ -33,6 +32,5 @@ extension Photo {
         case secret
         case server
         case farm
-        case title
     }
 }

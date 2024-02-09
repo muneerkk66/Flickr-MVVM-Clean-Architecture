@@ -28,7 +28,7 @@ struct PhotoGridView: View {
                 case .isLoading:
                     ProgressView()
                         .progressViewStyle(.circular)
-                        .frame(maxWidth: .infinity)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                 case .loadedAll:
                     EmptyView()
                 case let .error(message):

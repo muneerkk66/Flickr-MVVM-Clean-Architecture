@@ -13,7 +13,6 @@ struct PhotosResult {
     init(item: PhotosResponse) {
         self.item = item
     }
-
     var photos: [PhotoItem] {
         item.photos?.photo.map { PhotoItem(item: $0) } ?? []
     }
@@ -29,7 +28,7 @@ struct PhotoItem: Identifiable {
         self.item = item
     }
 
-    // With this approach, you get the benefits of URL encoding and escaping provided by URLComponents.
+    // MARK: With this approach, you get the benefits of URL encoding and escaping provided by URLComponents.
     var url: URL? {
         var components = URLComponents()
         components.scheme = "https"

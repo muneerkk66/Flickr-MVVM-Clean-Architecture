@@ -8,6 +8,7 @@
 import Foundation
 
 enum AppConstants {
+    // The total number of images loaded in each API request.
     static let pageLimit = 50
     static let photosRequestMethod = "flickr.photos.search"
 

@@ -30,8 +30,8 @@ extension FlickrServiceLive: FlickrService {
         let parms = [
             AppConstants.PhotosRequestQuery.text: name,
             AppConstants.PhotosRequestQuery.page: String(page),
-            AppConstants.PhotosRequestQuery.method: AppConstants.photosRequestMethod
-            // AppConstants.PhotosRequestQuery.perPage: AppConstants.pageLimit,
+            AppConstants.PhotosRequestQuery.method: AppConstants.photosRequestMethod,
+            AppConstants.PhotosRequestQuery.perPage: String(AppConstants.pageLimit)
         ]
 
         let fetchPhotosRequest = APIRequest<PhotosResponse>(

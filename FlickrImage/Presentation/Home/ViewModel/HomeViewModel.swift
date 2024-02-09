@@ -78,7 +78,7 @@ final class HomeViewModel: ObservableObject {
             .store(in: &disposables)
     }
 
-    // TODO: This can be moved to Repository level to maintain the data seperation.
+    // TODO: This functionality should be moved to the Repository level in order to uphold data separation.
 
     func saveSearchHistory(text: String) {
         let history = Item(context: PersistenceController.shared.container.viewContext)
