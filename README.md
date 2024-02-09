@@ -17,8 +17,9 @@ Discover stunning photos from around the world with the Flickr Photos app. Effor
 
 ## How to use app
 To initiate a photo search, simply enter the desired photo name in the search bar, and the API request will be automatically triggered. Each successful search query will persistently store the search term for future reference.
-### App Screenshot
-![Alt text](README_FILES/App.png?raw=true "Flickr App")
+
+### App Video
+![Alt text](README_FILES/App.gif?raw=true "Flickr App")
 
 ## Project Structure
 iOS Project implemented with Clean Layered Architecture and MVVM. 
