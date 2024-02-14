@@ -15,6 +15,10 @@ protocol PhotosRepository {
         withText seachText: String,
         page: Int
     ) -> AnyPublisher<PhotosResult, APIError>
+
+    func saveHistory(
+        withText seachText: String
+    )
 }
 
 private enum PhotosRepositoryKey: DependencyKey {

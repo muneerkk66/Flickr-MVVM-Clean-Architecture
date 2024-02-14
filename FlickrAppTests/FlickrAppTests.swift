@@ -7,8 +7,21 @@
 
 @testable import FlickrApp
 import XCTest
+import SwiftUI
+import SnapshotTesting
 
 final class FlickrAppTests: XCTestCase {
+
+    func testDefaultAppearance ( ) {
+        let contentView = ContentView()
+        assertSnapshot(of: contentView.toVC(), as: .image)
+    }
+
+    func testHistoryAppearance ( ) {
+        let contentView = HistoryView()
+        assertSnapshot(of: contentView.toVC(), as: .image)
+    }
+
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -30,5 +43,13 @@ final class FlickrAppTests: XCTestCase {
         measure {
             // Put the code you want to measure the time of here.
         }
+    }
+}
+
+extension SwiftUI.View {
+    func toVC() -> UIViewController {
+        let vc = UIHostingController(rootView: self)
+        vc.view.frame = UIScreen.main.bounds
+        return vc
     }
 }

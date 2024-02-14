@@ -25,7 +25,7 @@ final class HomeViewModel: ObservableObject {
     @Dependency(\.fetchPhotosUseCase) var fetchPhotosUseCase
 
     private var disposables = Set<AnyCancellable>()
-    private let scheduler: DispatchQueue = .init(label: "Flickr")
+    private let scheduler: DispatchQueue = .init(label: "Flickr", qos: .userInitiated)
     private var page: Int = 0
 
     init() {
@@ -33,10 +33,11 @@ final class HomeViewModel: ObservableObject {
             .dropFirst(1)
             .debounce(for: .seconds(0.5), scheduler: scheduler)
             .receive(on: DispatchQueue.main)
+            .filter {!$0.isEmpty}
             .sink { [weak self] text in
                 guard let self = self else { return }
+                self.photos.removeAll()
                 self.state = .good
-                self.photos = []
                 self.page = 1
                 self.fetchPhotos(seachText: text)
             }
@@ -44,16 +45,12 @@ final class HomeViewModel: ObservableObject {
     }
 
     func loadMore() {
-        if state != .isLoading {
-            fetchPhotos(seachText: searchText)
-        }
+        guard !searchText.isEmpty else {return}
+        fetchPhotos(seachText: searchText)
     }
 
     func fetchPhotos(seachText: String) {
-        guard !seachText.isEmpty else { return }
-
         state = .isLoading
-
         fetchPhotosUseCase
             .execute(withText: seachText, page: page)
             .receive(on: DispatchQueue.main)
@@ -73,17 +70,7 @@ final class HomeViewModel: ObservableObject {
                 self.page += 1
                 self.state = (results.photos.count >= AppConstants.pageLimit) ? .good : .loadedAll
 
-                saveSearchHistory(text: seachText)
             })
             .store(in: &disposables)
-    }
-
-    // TODO: This functionality should be moved to the Repository level in order to uphold data separation.
-
-    func saveSearchHistory(text: String) {
-        let history = Item(context: PersistenceController.shared.container.viewContext)
-        history.searchText = text
-        history.timestamp = Date()
-        PersistenceController.shared.save()
     }
 }

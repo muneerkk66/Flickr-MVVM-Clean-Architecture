@@ -79,27 +79,6 @@ class HomeViewModelTests: XCTestCase {
         wait(for: [expectation], timeout: 5.0)
 
     }
-
-    func testSaveSearchHistory() {
-        let searchText = "Test"
-        let itemFetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
-        itemFetchRequest.predicate = NSPredicate(format: "searchText == %@", searchText)
-
-        viewModel.saveSearchHistory(text: searchText)
-        do {
-            let searchHistoryItems = try persistenceController.container.viewContext.fetch(itemFetchRequest)
-            XCTAssertEqual(searchHistoryItems.count, 1, "Expected one search history item")
-
-            if let savedItem = searchHistoryItems.first {
-                XCTAssertEqual(savedItem.searchText, searchText, "Search text mismatch")
-                XCTAssertNotNil(savedItem.timestamp, "Timestamp should not be nil")
-            } else {
-                XCTFail("Failed to retrieve saved search history item")
-            }
-        } catch {
-            XCTFail("Error fetching search history items: \(error.localizedDescription)")
-        }
-    }
 }
 
 // Mock FetchPhotosUseCase for testing
