@@ -18,7 +18,7 @@ final class APIEnvironmentLive {
 extension APIEnvironmentLive: APIEnvironment {
     var environment: AppEnvironment {
         guard let currentEnvironment else {
-            print("Environment not set. Initialize environment using apiKitEnvironment.initialize(with environment:)")
+            LogInfo("Environment not set. Initialize environment using apiKitEnvironment.initialize(with environment:)")
             return AppEnvironment.qa
         }
         return currentEnvironment

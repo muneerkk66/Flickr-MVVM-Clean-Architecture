@@ -11,14 +11,14 @@ import Foundation
 
 @MainActor
 final class HomeViewModel: ObservableObject {
-    enum State: Comparable {
+    enum LoadingState: Comparable {
         case good
         case isLoading
         case loadedAll
         case error(String)
     }
 
-    @Published var state: State = .good
+    @Published var state: LoadingState = .good
     @Published var searchText: String = ""
     @Published var photos = [PhotoItem]()
 
@@ -26,7 +26,7 @@ final class HomeViewModel: ObservableObject {
 
     private var disposables = Set<AnyCancellable>()
     private let scheduler: DispatchQueue = .init(label: "Flickr", qos: .userInitiated)
-    private var page: Int = 0
+    private(set) var page: Int = 0
 
     init() {
         $searchText
@@ -60,6 +60,7 @@ final class HomeViewModel: ObservableObject {
                 case .failure:
                     self.photos = []
                     self.page = 0
+                    self.state = .good
                 case .finished:
                     break
                 }

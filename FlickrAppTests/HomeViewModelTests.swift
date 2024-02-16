@@ -22,7 +22,7 @@ class HomeViewModelTests: XCTestCase {
         super.setUp()
         persistenceController = PersistenceController()
         viewModel = withDependencies {
-            $0.fetchPhotosUseCase = MockFetchPhotosUseCase()
+            $0.fetchPhotosUseCase = MockFetchPhotosUseCase.success(with: MockData.photosResponseMock)
         } operation: {
             HomeViewModel()
         }
@@ -49,43 +49,40 @@ class HomeViewModelTests: XCTestCase {
     func testPhotosLoadMore() {
         viewModel.loadMore()
         XCTAssertTrue(viewModel.photos.isEmpty)
-        XCTAssertEqual(viewModel.state, HomeViewModel.State.good)
+        XCTAssertEqual(viewModel.state, HomeViewModel.LoadingState.good)
     }
 
-    func testFetchPhotos() async {
-        viewModel.state = .good
-        let searchText = "example"
-        let page = 1
-        let expectedResult = PhotosResult(item: MockData.photosResponseMock)
-
+    func testFetchPhotosSuccess() throws {
+        let searchText = "test"
+        let exp = XCTestExpectation(description: "TestFetchPhotosSuccess")
         viewModel.fetchPhotos(seachText: searchText)
-        // Simulate successful fetch using Combine
-        let expectation = XCTestExpectation(description: "FetchPhotos")
-        viewModel.fetchPhotosUseCase
-            .execute(withText: searchText, page: page)
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                case .failure(let error):
-                    XCTFail("Failed with error: \(error)")
-                case .finished:
-                    expectation.fulfill()
-                }
-            }, receiveValue: { result in
-
-                XCTAssertEqual(result.photos.first?.id, expectedResult.photos.first?.id)
-            })
-            .store(in: &cancellables)
-
-        wait(for: [expectation], timeout: 5.0)
-
-    }
-}
-
-// Mock FetchPhotosUseCase for testing
-class MockFetchPhotosUseCase: FetchPhotosUseCase {
-    func execute(withText _: String, page _: Int) -> AnyPublisher<PhotosResult, APIError> {
-        return Result.Publisher(result).eraseToAnyPublisher()
+        let result = XCTWaiter.wait(for: [exp], timeout: 0.5)
+        if result == XCTWaiter.Result.timedOut {
+            XCTAssertTrue(viewModel.photos.count > 0)
+            XCTAssertEqual(viewModel.state, HomeViewModel.LoadingState.loadedAll)
+            XCTAssertEqual(viewModel.page, 1)
+        } else {
+            XCTFail("Test Failed: FetchPhotos")
+        }
     }
 
-    var result: Result<PhotosResult, APIError> = .success(PhotosResult(item: MockData.photosResponseMock))
+    func testFetchPhotosFailure() throws {
+        let searchText = "test"
+        let exp = XCTestExpectation(description: "TestFetchPhotosFailure")
+        viewModel = withDependencies {
+            $0.fetchPhotosUseCase = MockFetchPhotosUseCase.failure(error: APIError.applicationError)
+        } operation: {
+            HomeViewModel()
+        }
+        viewModel.fetchPhotos(seachText: searchText)
+        let result = XCTWaiter.wait(for: [exp], timeout: 0.5)
+        if result == XCTWaiter.Result.timedOut {
+            XCTAssertEqual(viewModel.photos.count, 0)
+            XCTAssertEqual(viewModel.state, HomeViewModel.LoadingState.good)
+            XCTAssertEqual(viewModel.page, 0)
+        } else {
+            XCTFail("Test Failed: FetchPhotos")
+        }
+    }
+
 }

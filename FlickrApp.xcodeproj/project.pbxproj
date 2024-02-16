@@ -43,6 +43,11 @@
 		0845C8E22B763FE00079EAAB /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 0845C8E12B763FE00079EAAB /* README.md */; };
 		08A61B252B7D3FE5009FC942 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 08A61B242B7D3FE5009FC942 /* SnapshotTesting */; };
 		08A61B2B2B7D5B97009FC942 /* PresistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A61B2A2B7D5B97009FC942 /* PresistenceTests.swift */; };
+		08A61B2F2B7E8689009FC942 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A61B2E2B7E8689009FC942 /* Logger.swift */; };
+		08A61B302B7E86CD009FC942 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A61B2E2B7E8689009FC942 /* Logger.swift */; };
+		08A61B312B7E8A44009FC942 /* PersistenceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A61B2C2B7E85BE009FC942 /* PersistenceProvider.swift */; };
+		08A61B342B7E94A8009FC942 /* CombinePublisherTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A61B332B7E94A8009FC942 /* CombinePublisherTest.swift */; };
+		08A61B362B7EE18B009FC942 /* MockFetchPhotosUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A61B352B7EE18B009FC942 /* MockFetchPhotosUseCase.swift */; };
 		08FAE90C2B7695E900FC9FFE /* MockPhotoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAE90B2B7695E900FC9FFE /* MockPhotoResponse.swift */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +106,10 @@
 		0845C8CB2B75C2A10079EAAB /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		0845C8E12B763FE00079EAAB /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		08A61B2A2B7D5B97009FC942 /* PresistenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresistenceTests.swift; sourceTree = "<group>"; };
+		08A61B2C2B7E85BE009FC942 /* PersistenceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceProvider.swift; sourceTree = "<group>"; };
+		08A61B2E2B7E8689009FC942 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		08A61B332B7E94A8009FC942 /* CombinePublisherTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombinePublisherTest.swift; sourceTree = "<group>"; };
+		08A61B352B7EE18B009FC942 /* MockFetchPhotosUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFetchPhotosUseCase.swift; sourceTree = "<group>"; };
 		08FAE90B2B7695E900FC9FFE /* MockPhotoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPhotoResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -180,6 +189,7 @@
 		0845C7B62B74E7520079EAAB /* FlickrAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				08A61B322B7E9483009FC942 /* Utils */,
 				08FAE90A2B7695C600FC9FFE /* Mock */,
 				0845C7B72B74E7520079EAAB /* FlickrAppTests.swift */,
 				08A61B2A2B7D5B97009FC942 /* PresistenceTests.swift */,
@@ -303,8 +313,10 @@
 			isa = PBXGroup;
 			children = (
 				0845C8342B75005D0079EAAB /* Parser.swift */,
+				08A61B2C2B7E85BE009FC942 /* PersistenceProvider.swift */,
 				0845C85D2B757B1B0079EAAB /* AppConstants.swift */,
 				0845C8CB2B75C2A10079EAAB /* DateFormatter.swift */,
+				08A61B2E2B7E8689009FC942 /* Logger.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -367,10 +379,19 @@
 			path = History;
 			sourceTree = "<group>";
 		};
+		08A61B322B7E9483009FC942 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				08A61B332B7E94A8009FC942 /* CombinePublisherTest.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		08FAE90A2B7695C600FC9FFE /* Mock */ = {
 			isa = PBXGroup;
 			children = (
 				08FAE90B2B7695E900FC9FFE /* MockPhotoResponse.swift */,
+				08A61B352B7EE18B009FC942 /* MockFetchPhotosUseCase.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -522,6 +543,8 @@
 				0845C8202B74F1B00079EAAB /* AppEnvironment.swift in Sources */,
 				0845C81E2B74F1640079EAAB /* APIClient.swift in Sources */,
 				0845C7A42B74E7510079EAAB /* ContentView.swift in Sources */,
+				08A61B312B7E8A44009FC942 /* PersistenceProvider.swift in Sources */,
+				08A61B2F2B7E8689009FC942 /* Logger.swift in Sources */,
 				0845C8852B75AD320079EAAB /* Flickr.xcdatamodeld in Sources */,
 				0845C8352B75005D0079EAAB /* Parser.swift in Sources */,
 				0845C8822B75A9C00079EAAB /* HistoryView.swift in Sources */,
@@ -552,9 +575,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0845C8602B7594790079EAAB /* HomeViewModelTests.swift in Sources */,
+				08A61B302B7E86CD009FC942 /* Logger.swift in Sources */,
 				08A61B2B2B7D5B97009FC942 /* PresistenceTests.swift in Sources */,
 				08FAE90C2B7695E900FC9FFE /* MockPhotoResponse.swift in Sources */,
+				08A61B342B7E94A8009FC942 /* CombinePublisherTest.swift in Sources */,
 				0845C7B82B74E7520079EAAB /* FlickrAppTests.swift in Sources */,
+				08A61B362B7EE18B009FC942 /* MockFetchPhotosUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
