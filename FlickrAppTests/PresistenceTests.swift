@@ -7,6 +7,7 @@
 
 import XCTest
 @testable import FlickrApp
+import SnapshotTesting
 import CoreData
 
 final class PresistenceTests: XCTestCase {
@@ -27,7 +28,7 @@ final class PresistenceTests: XCTestCase {
         // Add some test data
         let context = persistenceController.container.viewContext
         let newItem = Item(context: context)
-        newItem.timestamp = Date()
+        newItem.updatedAt = Date()
 
         // Save changes
         persistenceController.save()

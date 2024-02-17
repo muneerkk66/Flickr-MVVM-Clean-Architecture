@@ -10,10 +10,10 @@ import Foundation
 
 struct MockData {
     static let photoMock = Photo(
-        photoID: "1234567890",
-        secret: "abcdefg",
-        server: "example.server.com",
-        farm: 1
+        photoID: "53534422806",
+        secret: "485f97db18",
+        server: "65535",
+        farm: 66
     )
 
     static let photosMock = Photos(
@@ -27,4 +27,13 @@ struct MockData {
     static let photosResponseMock = PhotosResponse(
         photos: photosMock
     )
+
+    static let request = APIRequest<PhotosResponse>(
+        path: FlickrServiceLive.Endpoint.fetchPhotos.path,
+        query: [AppConstants.PhotosRequestQuery.text: "name",
+                AppConstants.PhotosRequestQuery.page: "1",
+                AppConstants.PhotosRequestQuery.method: AppConstants.photosRequestMethod,
+                AppConstants.PhotosRequestQuery.perPage: String(AppConstants.pageLimit)]
+    )
+
 }

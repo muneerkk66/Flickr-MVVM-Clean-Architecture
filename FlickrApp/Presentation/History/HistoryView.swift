@@ -12,7 +12,7 @@ struct HistoryView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: false)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \Item.updatedAt, ascending: false)],
         animation: .default
     )
     private var items: FetchedResults<Item>
@@ -22,7 +22,7 @@ struct HistoryView: View {
             ForEach(items) { item in
                 VStack(alignment: .leading) {
                     Text(item.searchText ?? "").font(.title3)
-                    Text("\(item.timestamp ?? Date(), formatter: dateFormatter)").font(.callout)
+                    Text("\(item.updatedAt ?? Date(), formatter: dateFormatter)").font(.callout)
                 }
             }
         }

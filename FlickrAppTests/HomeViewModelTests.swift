@@ -16,10 +16,10 @@ class HomeViewModelTests: XCTestCase {
     var viewModel: HomeViewModel!
     var mockFetchPhotosUseCase: MockFetchPhotosUseCase!
     var persistenceController: PersistenceController!
-    var cancellables: Set<AnyCancellable> = []
 
     override func setUp() {
         super.setUp()
+
         persistenceController = PersistenceController()
         viewModel = withDependencies {
             $0.fetchPhotosUseCase = MockFetchPhotosUseCase.success(with: MockData.photosResponseMock)

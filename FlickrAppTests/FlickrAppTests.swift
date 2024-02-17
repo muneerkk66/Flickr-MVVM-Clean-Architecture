@@ -6,28 +6,42 @@
 //
 
 @testable import FlickrApp
+import Dependencies
 import XCTest
 import SwiftUI
 import SnapshotTesting
 
+@MainActor
 final class FlickrAppTests: XCTestCase {
-
-    func testDefaultAppearance ( ) {
-        let contentView = ContentView()
-        assertSnapshot(of: contentView.toVC(), as: .image)
-    }
-
-    func testHistoryAppearance ( ) {
-        let contentView = HistoryView()
-        assertSnapshot(of: contentView.toVC(), as: .image)
-    }
+    var viewModel: HomeViewModel!
+    var persistenceController: PersistenceController!
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        persistenceController = PersistenceController(inMemory: true)
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+    }
+    func testDefaultAppearance ( ) {
+        let contentView = ContentView()
+        assertSnapshot(of: contentView.toVC(), as: .image)
+
+    }
+
+    func testHistoryAppearance ( ) {
+        let context = persistenceController.container.viewContext
+        let newItem = Item(context: context)
+        newItem.searchText = "Test"
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd HH:mm"
+        newItem.updatedAt = formatter.date(from: "2016/10/08 22:31")
+
+        // Save changes
+        persistenceController.save()
+
+        let contentView = HistoryView().environment(\.managedObjectContext, persistenceController.container.viewContext)
+        assertSnapshot(of: contentView.toVC(), as: .image)
     }
 
     func testExample() throws {
@@ -43,13 +57,5 @@ final class FlickrAppTests: XCTestCase {
         measure {
             // Put the code you want to measure the time of here.
         }
-    }
-}
-
-extension SwiftUI.View {
-    func toVC() -> UIViewController {
-        let vc = UIHostingController(rootView: self)
-        vc.view.frame = UIScreen.main.bounds
-        return vc
     }
 }

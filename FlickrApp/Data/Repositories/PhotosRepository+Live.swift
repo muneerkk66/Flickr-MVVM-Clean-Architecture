@@ -27,7 +27,7 @@ final class PhotosRepositoryLive: PhotosRepository {
     func saveHistory(withText seachText: String) {
         let history = Item(context: PersistenceController.shared.container.viewContext)
         history.searchText = seachText
-        history.timestamp = Date()
+        history.updatedAt = Date()
         PersistenceController.shared.save()
     }
 }

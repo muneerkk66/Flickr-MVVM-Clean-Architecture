@@ -29,6 +29,10 @@ final class HomeViewModel: ObservableObject {
     private(set) var page: Int = 0
 
     init() {
+        initializetextField()
+    }
+
+    func initializetextField() {
         $searchText
             .dropFirst(1)
             .debounce(for: .seconds(0.5), scheduler: scheduler)

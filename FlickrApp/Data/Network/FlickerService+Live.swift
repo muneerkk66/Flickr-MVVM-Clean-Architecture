@@ -12,7 +12,7 @@ import Foundation
 final class FlickrServiceLive {
     @Dependency(\.apiClient) private var apiClient
 
-    private enum Endpoint {
+    enum Endpoint {
         case fetchPhotos
         var path: String {
             switch self {

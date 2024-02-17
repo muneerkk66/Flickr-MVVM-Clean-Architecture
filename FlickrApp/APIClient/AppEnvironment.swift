@@ -11,6 +11,7 @@ enum AppEnvironment: String, Codable, CaseIterable {
     case development = "dev"
     case qa
     case production = "prod"
+    case test
 }
 
 // TODO: Update environemnt variables based on the server.
@@ -23,6 +24,8 @@ extension AppEnvironment {
             return URL(string: "https://api.flickr.com")!
         case .production:
             return URL(string: "https://api.flickr.com")!
+        case .test:
+            return URL(string: " ")!
         }
     }
 
@@ -35,6 +38,8 @@ extension AppEnvironment {
             return "441d46abf1eb6066ecf67cdd8a753f29"
         case .production:
             return "441d46abf1eb6066ecf67cdd8a753f29"
+        case .test:
+            return ""
         }
     }
 }
