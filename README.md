@@ -43,9 +43,7 @@ iOS Project implemented with Clean Layered Architecture and MVVM.
 ## What needs to be improved ##
 ### Required
 1. Improve unit test coverage.
-2. Move presistance layer into Repository level in order to uphold data separation.
-3. Add snapshot testing using [Snapshot-Testing]https://github.com/pointfreeco/swift-snapshot-testing
-4. Add logging and error handling
+2. Add logging and error handling
 
 ### Tools
  1. - [Arkana](https://github.com/rogerluan/arkana) is used to handle/manage/store project keys secretely.
