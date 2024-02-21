@@ -9,7 +9,6 @@ import CoreData
 import SwiftUI
 
 struct HistoryView: View {
-    @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.updatedAt, ascending: false)],
@@ -24,7 +23,7 @@ struct HistoryView: View {
                     Text(item.searchText ?? "").font(.title3)
                     Text("\(item.updatedAt ?? Date(), formatter: dateFormatter)").font(.callout)
                 }
-            }
+            }.navigationTitle("History")
         }
     }
 }

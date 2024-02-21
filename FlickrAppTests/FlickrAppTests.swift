@@ -24,7 +24,7 @@ final class FlickrAppTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     func testDefaultAppearance ( ) {
-        let contentView = ContentView()
+        let contentView = HomeView()
         assertSnapshot(of: contentView.toVC(), as: .image)
 
     }

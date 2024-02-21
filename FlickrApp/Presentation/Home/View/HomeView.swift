@@ -9,28 +9,25 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject var viewModel = HomeViewModel()
+    @EnvironmentObject var coordinator: Coordinator<AppCoordinator>
 
     var body: some View {
-        NavigationStack {
-            PhotoGridView(viewModel: viewModel)
-                .navigationTitle("Photos")
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        NavigationLink(value: "Item") {
-                            Image(systemName: "clock")
-                        }.navigationDestination(for: String.self) { view in
-                            if view == "Item" {
-                                HistoryView()
-                            }
-                        }
+        PhotoGridView(viewModel: viewModel)
+            .navigationTitle("Photos")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        coordinator.show(.history)
+                    } label: {
+                        Image(systemName: "clock")
                     }
+
                 }
-        }
-        .searchable(text: $viewModel.searchText)
+            }
+            .searchable(text: $viewModel.searchText, placement: .navigationBarDrawer(displayMode: .always))
     }
 }
 
 #Preview {
     HomeView()
-        .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
 }
