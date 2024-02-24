@@ -8,8 +8,7 @@ Discover stunning photos from around the world with the Flickr Photos app. Effor
 - iOS 16+
 - SwiftUI
 - Swift Package Manager(SPM) Dependencies
-- Bundler Dependencies
-	- [swift-depedendencies](https://github.com/pointfreeco/swift-dependencies): A dependency management library inspired by SwiftUI's "environment."
+  
 ### Project Setup
 1. Clone the repository.
 2. Finally, navigate to the root folder run Xcode
