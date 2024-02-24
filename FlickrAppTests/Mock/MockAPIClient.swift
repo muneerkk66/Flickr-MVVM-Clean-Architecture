@@ -13,15 +13,15 @@ import Network
 struct MockAPIClient: APIClient {
 
     func request<Response: Decodable>(_ request: APIRequest<Response>) -> AnyPublisher<Response, APIError> {
-        return  Just(MockData.photosResponseMock as! Response)
+        return  Just(MockData.photosResponse as! Response)
             .setFailureType(to: APIError.self)
             .eraseToAnyPublisher()
     }
 }
 
 struct MockAPIEnvironment: APIEnvironment {
-    var environment: FlickrApp.AppEnvironment
-    func set(to environment: FlickrApp.AppEnvironment) {
+    var environment: AppEnvironment
+    func set(to environment: AppEnvironment) {
     }
 }
 

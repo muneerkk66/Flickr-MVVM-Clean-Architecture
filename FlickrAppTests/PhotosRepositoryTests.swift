@@ -6,7 +6,6 @@
 //
 
 import Combine
-import Dependencies
 @testable import FlickrApp
 import XCTest
 import CoreData
@@ -19,11 +18,7 @@ final class PhotosRepositoryTests: XCTestCase {
 
     override func setUpWithError() throws {
         persistenceController = PersistenceController()
-        model = withDependencies {
-            $0.flickrService = MockFlickrService()
-        } operation: {
-            PhotosRepositoryLive()
-        }
+        model = PhotosRepositoryLive(flickrService: MockFlickrService())
     }
 
     override func tearDownWithError() throws {

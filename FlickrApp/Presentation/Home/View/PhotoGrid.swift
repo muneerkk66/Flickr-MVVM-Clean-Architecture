@@ -23,7 +23,7 @@ struct PhotoGridView: View {
                 case .good:
                     Color.clear
                         .onAppear {
-                            viewModel.loadMore()
+                            viewModel.handle(.loadMorePhotos)
                         }
                 case .isLoading:
                     ProgressView()
@@ -41,5 +41,5 @@ struct PhotoGridView: View {
 }
 
 #Preview {
-    PhotoGridView(viewModel: HomeViewModel())
+    PhotoGridView(viewModel: HomeViewModel(coordinator: HomeCoordinator(), fetchPhotosUseCase: AppFactory().makeFetchPhotosUseCase()))
 }

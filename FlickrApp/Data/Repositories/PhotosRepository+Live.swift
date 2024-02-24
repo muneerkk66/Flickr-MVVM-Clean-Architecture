@@ -6,27 +6,34 @@
 //
 
 import Combine
-import Dependencies
 import Foundation
 
 final class PhotosRepositoryLive: PhotosRepository {
 
-    @Dependency(\.flickrService) var flickrService
+    private var flickrService: FlickrService
 
-    func fetchPhotos(withText seachText: String, page: Int) -> AnyPublisher<PhotosResult, APIError> {
-        flickrService
-            .fetchPhotos(withText: seachText, page: page).map {
+    init(flickrService: FlickrService) {
+        self.flickrService = flickrService
+    }
+
+    func fetchPhotos(withText searchText: String, page: Int) -> AnyPublisher<PhotosResult, APIError> {
+        guard NetworkMonitor.shared.isConnected else { return Fail(error: APIError.connectionError).eraseToAnyPublisher()}
+
+        return flickrService
+            .fetchPhotos(withText: searchText, page: page)
+
+            .map {
                 [weak self] result -> PhotosResult in
                 // Save History in DB
-                self?.saveHistory(withText: seachText)
+                self?.saveHistory(withText: searchText)
                 return PhotosResult(item: result)
 
             }.eraseToAnyPublisher()
     }
 
-    func saveHistory(withText seachText: String) {
+    func saveHistory(withText searchText: String) {
         let history = Item(context: PersistenceController.shared.container.viewContext)
-        history.searchText = seachText
+        history.searchText = searchText
         history.updatedAt = Date()
         PersistenceController.shared.save()
     }

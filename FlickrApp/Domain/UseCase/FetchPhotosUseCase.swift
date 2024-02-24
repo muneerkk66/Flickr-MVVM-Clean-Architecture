@@ -6,7 +6,6 @@
 //
 
 import Combine
-import Dependencies
 import Foundation
 
 protocol FetchPhotosUseCase {
@@ -17,20 +16,13 @@ protocol FetchPhotosUseCase {
 }
 
 final class DefaultFetchPhotosUseCase: FetchPhotosUseCase {
-    @Dependency(\.photosRepositoryKey) private var photosRepository
+    private var photosRepository: PhotosRepository
+
+    init(photosRepository: PhotosRepository) {
+        self.photosRepository = photosRepository
+    }
 
     func execute(withText name: String, page: Int) -> AnyPublisher<PhotosResult, APIError> {
         return photosRepository.fetchPhotos(withText: name, page: page)
-    }
-}
-
-private enum FetchPhotosUseCaseKey: DependencyKey {
-    static let liveValue: FetchPhotosUseCase = DefaultFetchPhotosUseCase()
-}
-
-extension DependencyValues {
-    var fetchPhotosUseCase: FetchPhotosUseCase {
-        get { self[FetchPhotosUseCaseKey.self] }
-        set { self[FetchPhotosUseCaseKey.self] = newValue }
     }
 }

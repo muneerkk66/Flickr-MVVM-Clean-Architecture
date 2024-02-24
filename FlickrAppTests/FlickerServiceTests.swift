@@ -6,17 +6,12 @@
 //
 
 import XCTest
-import Dependencies
 @testable import FlickrApp
 
 final class FlickerServiceTests: XCTestCase {
     var model: FlickrServiceLive!
     override func setUpWithError() throws {
-        model = withDependencies {
-            $0.apiClient = MockAPIClient()
-        } operation: {
-            FlickrServiceLive()
-        }
+        model = FlickrServiceLive(apiClient: MockAPIClient())
 
     }
 
@@ -26,8 +21,8 @@ final class FlickerServiceTests: XCTestCase {
 
     func testExample() throws {
         let page = 1
-        let searchtext = "Test"
-        let result = try awaitPublisher(model.fetchPhotos(withText: searchtext, page: page))
+        let searchText = "Test"
+        let result = try awaitPublisher(model.fetchPhotos(withText: searchText, page: page))
         XCTAssertTrue(try XCTUnwrap(result.photos?.photo.count) > 0)
     }
 

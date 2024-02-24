@@ -10,7 +10,7 @@ import XCTest
 import SnapshotTesting
 import CoreData
 
-final class PresistenceTests: XCTestCase {
+final class PersistenceTests: XCTestCase {
 
     var persistenceController: PersistenceController!
 

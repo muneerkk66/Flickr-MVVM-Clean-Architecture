@@ -6,7 +6,6 @@
 //
 
 @testable import FlickrApp
-import Dependencies
 import XCTest
 import SwiftUI
 import SnapshotTesting
@@ -24,9 +23,13 @@ final class FlickrAppTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     func testDefaultAppearance ( ) {
-        let contentView = HomeView()
+        let contentView = HomeView(viewModel: HomeViewModel(coordinator: MockHomeCoordinator(), fetchPhotosUseCase: MockFetchPhotosUseCase.success(with: MockData.photosResponse)))
         assertSnapshot(of: contentView.toVC(), as: .image)
+    }
 
+    func testPhotoViewAppearance ( ) {
+        let contentView = PhotoView(url: URL(string: MockData.imageUrl))
+        assertSnapshot(of: contentView.toVC(), as: .image, timeout: 10)
     }
 
     func testHistoryAppearance ( ) {

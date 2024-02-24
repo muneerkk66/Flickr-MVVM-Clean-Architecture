@@ -6,33 +6,31 @@
 //
 
 import Combine
-import Dependencies
 import Foundation
+import SwiftUI
 
 @MainActor
 final class HomeViewModel: ObservableObject {
-    enum LoadingState: Comparable {
-        case good
-        case isLoading
-        case loadedAll
-        case error(String)
-    }
 
-    @Published var state: LoadingState = .good
+    @Published var state: PhotosLoadingState = .good
     @Published var searchText: String = ""
     @Published var photos = [PhotoItem]()
 
-    @Dependency(\.fetchPhotosUseCase) var fetchPhotosUseCase
+    private let coordinator: HomeCoordinatorProtocol
+    private let fetchPhotosUseCase: FetchPhotosUseCase
 
     private var disposables = Set<AnyCancellable>()
     private let scheduler: DispatchQueue = .init(label: "Flickr", qos: .userInitiated)
     private(set) var page: Int = 0
 
-    init() {
-        initializetextField()
+    init(coordinator: HomeCoordinatorProtocol, fetchPhotosUseCase: FetchPhotosUseCase) {
+        self.coordinator = coordinator
+        self.fetchPhotosUseCase = fetchPhotosUseCase
+
+        listenTextField()
     }
 
-    func initializetextField() {
+    func listenTextField() {
         $searchText
             .dropFirst(1)
             .debounce(for: .seconds(0.5), scheduler: scheduler)
@@ -43,28 +41,37 @@ final class HomeViewModel: ObservableObject {
                 self.photos.removeAll()
                 self.state = .good
                 self.page = 1
-                self.fetchPhotos(seachText: text)
+                self.fetchPhotos(searchText: text)
             }
             .store(in: &disposables)
     }
 
-    func loadMore() {
-        guard !searchText.isEmpty else {return}
-        fetchPhotos(seachText: searchText)
+    func handle(_ event: HomeViewEvent) {
+        switch event {
+        case .loadMorePhotos:
+            loadMore()
+        case .onTapHistory:
+            coordinator.showHistory()
+        }
     }
 
-    func fetchPhotos(seachText: String) {
+    func loadMore() {
+        guard !searchText.isEmpty else {return}
+        fetchPhotos(searchText: searchText)
+    }
+
+    func fetchPhotos(searchText: String) {
         state = .isLoading
         fetchPhotosUseCase
-            .execute(withText: seachText, page: page)
+            .execute(withText: searchText, page: page)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] value in
                 guard let self = self else { return }
                 switch value {
-                case .failure:
+                case .failure(let error):
                     self.photos = []
                     self.page = 0
-                    self.state = .good
+                    self.state = .error(error.message)
                 case .finished:
                     break
                 }

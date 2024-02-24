@@ -7,12 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		08329A352B863FAF00A9FCC6 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08329A342B863FAF00A9FCC6 /* Coordinator.swift */; };
-		08329A372B86401300A9FCC6 /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08329A362B86401300A9FCC6 /* NavigationRouter.swift */; };
-		08329A392B86403B00A9FCC6 /* NavigationTransitionStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08329A382B86403B00A9FCC6 /* NavigationTransitionStyle.swift */; };
+		081D2D352B8A31FD0045C778 /* MockCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081D2D342B8A31FD0045C778 /* MockCoordinator.swift */; };
 		08329A3B2B8642BD00A9FCC6 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08329A3A2B8642BD00A9FCC6 /* AppCoordinator.swift */; };
-		08329A3D2B86455500A9FCC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08329A3C2B86455500A9FCC6 /* AppDelegate.swift */; };
-		08329A3F2B86456200A9FCC6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08329A3E2B86456200A9FCC6 /* SceneDelegate.swift */; };
+		08444A492B87A37D0047FE66 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08444A482B87A37D0047FE66 /* NetworkMonitor.swift */; };
+		08444A4B2B87DE800047FE66 /* FlickrApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08444A4A2B87DE800047FE66 /* FlickrApp.swift */; };
+		08444A4D2B87DF130047FE66 /* AppCoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08444A4C2B87DF130047FE66 /* AppCoordinatorView.swift */; };
 		0845C7A62B74E7520079EAAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0845C7A52B74E7520079EAAB /* Assets.xcassets */; };
 		0845C7A92B74E7520079EAAB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0845C7A82B74E7520079EAAB /* Preview Assets.xcassets */; };
 		0845C7B82B74E7520079EAAB /* FlickrAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0845C7B72B74E7520079EAAB /* FlickrAppTests.swift */; };
@@ -28,7 +27,6 @@
 		0845C8292B74F7660079EAAB /* FlickerService+Live.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0845C8282B74F7660079EAAB /* FlickerService+Live.swift */; };
 		0845C82B2B74F8BF0079EAAB /* PhotosResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0845C82A2B74F8BF0079EAAB /* PhotosResponse.swift */; };
 		0845C82D2B74F95B0079EAAB /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0845C82C2B74F95B0079EAAB /* APIError.swift */; };
-		0845C8302B74FBFC0079EAAB /* Dependencies in Frameworks */ = {isa = PBXBuildFile; productRef = 0845C82F2B74FBFC0079EAAB /* Dependencies */; };
 		0845C8352B75005D0079EAAB /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0845C8342B75005D0079EAAB /* Parser.swift */; };
 		0845C8392B7508430079EAAB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0845C8382B7508430079EAAB /* HomeView.swift */; };
 		0845C83B2B7508830079EAAB /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0845C83A2B7508830079EAAB /* HomeViewModel.swift */; };
@@ -50,7 +48,7 @@
 		084AEA6D2B81105000AFAFB7 /* PhotosRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084AEA6C2B81105000AFAFB7 /* PhotosRepositoryTests.swift */; };
 		084AEA6F2B8110F200AFAFB7 /* MockFlickrService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084AEA6E2B8110F200AFAFB7 /* MockFlickrService.swift */; };
 		08A61B252B7D3FE5009FC942 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 08A61B242B7D3FE5009FC942 /* SnapshotTesting */; };
-		08A61B2B2B7D5B97009FC942 /* PresistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A61B2A2B7D5B97009FC942 /* PresistenceTests.swift */; };
+		08A61B2B2B7D5B97009FC942 /* PersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A61B2A2B7D5B97009FC942 /* PersistenceTests.swift */; };
 		08A61B2F2B7E8689009FC942 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A61B2E2B7E8689009FC942 /* Logger.swift */; };
 		08A61B302B7E86CD009FC942 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A61B2E2B7E8689009FC942 /* Logger.swift */; };
 		08A61B312B7E8A44009FC942 /* PersistenceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A61B2C2B7E85BE009FC942 /* PersistenceProvider.swift */; };
@@ -60,6 +58,16 @@
 		08D4ED9C2B7FE4E0006B5764 /* MockAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D4ED9B2B7FE4E0006B5764 /* MockAPIClient.swift */; };
 		08D4ED9E2B80ED2E006B5764 /* APIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D4ED9D2B80ED2E006B5764 /* APIClientTests.swift */; };
 		08D4EDA22B810458006B5764 /* SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D4EDA12B810458006B5764 /* SwiftUI.swift */; };
+		08F62F992B87F62300038E04 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F62F982B87F62300038E04 /* HomeCoordinator.swift */; };
+		08F62F9C2B88975100038E04 /* HomeCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F62F9B2B88975100038E04 /* HomeCoordinatorProtocol.swift */; };
+		08F62F9E2B8898E600038E04 /* HomeViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F62F9D2B8898E600038E04 /* HomeViewState.swift */; };
+		08F62FA02B88A34F00038E04 /* HomeCoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F62F9F2B88A34F00038E04 /* HomeCoordinatorView.swift */; };
+		08F62FA62B89230D00038E04 /* AppFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F62FA52B89230D00038E04 /* AppFactory.swift */; };
+		08F62FA82B892BC400038E04 /* ScreenFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F62FA72B892BC400038E04 /* ScreenFactory.swift */; };
+		08F62FAB2B892CC200038E04 /* ScreenFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F62FAA2B892CC200038E04 /* ScreenFactoryProtocol.swift */; };
+		08F62FAD2B892D2000038E04 /* CoordinatorFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F62FAC2B892D2000038E04 /* CoordinatorFactoryProtocol.swift */; };
+		08F62FB12B89368F00038E04 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F62FB02B89368F00038E04 /* Coordinator.swift */; };
+		08F62FB32B8936A800038E04 /* Routable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F62FB22B8936A800038E04 /* Routable.swift */; };
 		08FAE90C2B7695E900FC9FFE /* MockPhotoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FAE90B2B7695E900FC9FFE /* MockPhotoResponse.swift */; };
 /* End PBXBuildFile section */
 
@@ -81,13 +89,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		08329A342B863FAF00A9FCC6 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		08329A362B86401300A9FCC6 /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
-		08329A382B86403B00A9FCC6 /* NavigationTransitionStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTransitionStyle.swift; sourceTree = "<group>"; };
+		081D2D342B8A31FD0045C778 /* MockCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCoordinator.swift; sourceTree = "<group>"; };
 		08329A3A2B8642BD00A9FCC6 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		08329A3C2B86455500A9FCC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		08329A3E2B86456200A9FCC6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		08329A402B864C4F00A9FCC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		08444A482B87A37D0047FE66 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		08444A4A2B87DE800047FE66 /* FlickrApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrApp.swift; sourceTree = "<group>"; };
+		08444A4C2B87DF130047FE66 /* AppCoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorView.swift; sourceTree = "<group>"; };
 		0845C79E2B74E7510079EAAB /* FlickrApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0845C7A52B74E7520079EAAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0845C7A82B74E7520079EAAB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -126,7 +133,7 @@
 		084AEA672B810BDC00AFAFB7 /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		084AEA6C2B81105000AFAFB7 /* PhotosRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosRepositoryTests.swift; sourceTree = "<group>"; };
 		084AEA6E2B8110F200AFAFB7 /* MockFlickrService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFlickrService.swift; sourceTree = "<group>"; };
-		08A61B2A2B7D5B97009FC942 /* PresistenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresistenceTests.swift; sourceTree = "<group>"; };
+		08A61B2A2B7D5B97009FC942 /* PersistenceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistenceTests.swift; sourceTree = "<group>"; };
 		08A61B2C2B7E85BE009FC942 /* PersistenceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceProvider.swift; sourceTree = "<group>"; };
 		08A61B2E2B7E8689009FC942 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		08A61B332B7E94A8009FC942 /* CombinePublisherTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombinePublisherTest.swift; sourceTree = "<group>"; };
@@ -135,6 +142,16 @@
 		08D4ED9B2B7FE4E0006B5764 /* MockAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIClient.swift; sourceTree = "<group>"; };
 		08D4ED9D2B80ED2E006B5764 /* APIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientTests.swift; sourceTree = "<group>"; };
 		08D4EDA12B810458006B5764 /* SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI.swift; sourceTree = "<group>"; };
+		08F62F982B87F62300038E04 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		08F62F9B2B88975100038E04 /* HomeCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinatorProtocol.swift; sourceTree = "<group>"; };
+		08F62F9D2B8898E600038E04 /* HomeViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewState.swift; sourceTree = "<group>"; };
+		08F62F9F2B88A34F00038E04 /* HomeCoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinatorView.swift; sourceTree = "<group>"; };
+		08F62FA52B89230D00038E04 /* AppFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFactory.swift; sourceTree = "<group>"; };
+		08F62FA72B892BC400038E04 /* ScreenFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenFactory.swift; sourceTree = "<group>"; };
+		08F62FAA2B892CC200038E04 /* ScreenFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenFactoryProtocol.swift; sourceTree = "<group>"; };
+		08F62FAC2B892D2000038E04 /* CoordinatorFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorFactoryProtocol.swift; sourceTree = "<group>"; };
+		08F62FB02B89368F00038E04 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		08F62FB22B8936A800038E04 /* Routable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routable.swift; sourceTree = "<group>"; };
 		08FAE90B2B7695E900FC9FFE /* MockPhotoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPhotoResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,7 +160,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0845C8302B74FBFC0079EAAB /* Dependencies in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,16 +181,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		08329A332B863F8900A9FCC6 /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				08329A342B863FAF00A9FCC6 /* Coordinator.swift */,
-				08329A362B86401300A9FCC6 /* NavigationRouter.swift */,
-				08329A382B86403B00A9FCC6 /* NavigationTransitionStyle.swift */,
-			);
-			path = Coordinator;
-			sourceTree = "<group>";
-		};
 		0845C7952B74E7510079EAAB = {
 			isa = PBXGroup;
 			children = (
@@ -201,13 +207,12 @@
 			isa = PBXGroup;
 			children = (
 				08329A402B864C4F00A9FCC6 /* Info.plist */,
-				08329A332B863F8900A9FCC6 /* Coordinator */,
-				0845C8502B7550DE0079EAAB /* Domain */,
-				0845C8332B7500460079EAAB /* Utils */,
-				0845C8172B74EF9A0079EAAB /* APIClient */,
 				0845C8162B74EEFB0079EAAB /* Application */,
 				0845C80F2B74EDC00079EAAB /* Presentation */,
+				0845C8502B7550DE0079EAAB /* Domain */,
 				0845C80D2B74EDA70079EAAB /* Data */,
+				0845C8172B74EF9A0079EAAB /* APIClient */,
+				0845C8332B7500460079EAAB /* Utils */,
 				0845C7A52B74E7520079EAAB /* Assets.xcassets */,
 				0845C7A72B74E7520079EAAB /* Preview Content */,
 			);
@@ -228,7 +233,7 @@
 				08A61B322B7E9483009FC942 /* Utils */,
 				08FAE90A2B7695C600FC9FFE /* Mock */,
 				0845C7B72B74E7520079EAAB /* FlickrAppTests.swift */,
-				08A61B2A2B7D5B97009FC942 /* PresistenceTests.swift */,
+				08A61B2A2B7D5B97009FC942 /* PersistenceTests.swift */,
 				0845C85F2B7594790079EAAB /* HomeViewModelTests.swift */,
 				08D4ED992B7FE202006B5764 /* FlickerServiceTests.swift */,
 				08D4ED9D2B80ED2E006B5764 /* APIClientTests.swift */,
@@ -259,6 +264,7 @@
 		0845C80F2B74EDC00079EAAB /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				08F62FAF2B89334D00038E04 /* AppCoordinator */,
 				0845C8702B759EB10079EAAB /* History */,
 				0845C8102B74EDD60079EAAB /* Home */,
 			);
@@ -268,6 +274,7 @@
 		0845C8102B74EDD60079EAAB /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				08F62F9A2B88972C00038E04 /* Coordinator */,
 				0845C8122B74EE230079EAAB /* ViewModel */,
 				0845C8112B74EE110079EAAB /* View */,
 			);
@@ -280,6 +287,7 @@
 				0845C85A2B755E300079EAAB /* Components */,
 				0845C8382B7508430079EAAB /* HomeView.swift */,
 				0845C8582B755C380079EAAB /* PhotoGrid.swift */,
+				08F62F9D2B8898E600038E04 /* HomeViewState.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -316,9 +324,8 @@
 		0845C8162B74EEFB0079EAAB /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				08329A3A2B8642BD00A9FCC6 /* AppCoordinator.swift */,
-				08329A3C2B86455500A9FCC6 /* AppDelegate.swift */,
-				08329A3E2B86456200A9FCC6 /* SceneDelegate.swift */,
+				08F62FA92B892C6600038E04 /* DependencyInjection */,
+				08444A4A2B87DE800047FE66 /* FlickrApp.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -360,6 +367,7 @@
 				0845C85D2B757B1B0079EAAB /* AppConstants.swift */,
 				0845C8CB2B75C2A10079EAAB /* DateFormatter.swift */,
 				08A61B2E2B7E8689009FC942 /* Logger.swift */,
+				08444A482B87A37D0047FE66 /* NetworkMonitor.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -431,6 +439,38 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		08F62F9A2B88972C00038E04 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				08F62F982B87F62300038E04 /* HomeCoordinator.swift */,
+				08F62F9B2B88975100038E04 /* HomeCoordinatorProtocol.swift */,
+				08F62F9F2B88A34F00038E04 /* HomeCoordinatorView.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		08F62FA92B892C6600038E04 /* DependencyInjection */ = {
+			isa = PBXGroup;
+			children = (
+				08F62FA52B89230D00038E04 /* AppFactory.swift */,
+				08F62FA72B892BC400038E04 /* ScreenFactory.swift */,
+				08F62FAA2B892CC200038E04 /* ScreenFactoryProtocol.swift */,
+				08F62FAC2B892D2000038E04 /* CoordinatorFactoryProtocol.swift */,
+			);
+			path = DependencyInjection;
+			sourceTree = "<group>";
+		};
+		08F62FAF2B89334D00038E04 /* AppCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				08329A3A2B8642BD00A9FCC6 /* AppCoordinator.swift */,
+				08444A4C2B87DF130047FE66 /* AppCoordinatorView.swift */,
+				08F62FB02B89368F00038E04 /* Coordinator.swift */,
+				08F62FB22B8936A800038E04 /* Routable.swift */,
+			);
+			path = AppCoordinator;
+			sourceTree = "<group>";
+		};
 		08FAE90A2B7695C600FC9FFE /* Mock */ = {
 			isa = PBXGroup;
 			children = (
@@ -438,6 +478,7 @@
 				08A61B352B7EE18B009FC942 /* MockFetchPhotosUseCase.swift */,
 				08D4ED9B2B7FE4E0006B5764 /* MockAPIClient.swift */,
 				084AEA6E2B8110F200AFAFB7 /* MockFlickrService.swift */,
+				081D2D342B8A31FD0045C778 /* MockCoordinator.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -459,7 +500,6 @@
 			);
 			name = FlickrApp;
 			packageProductDependencies = (
-				0845C82F2B74FBFC0079EAAB /* Dependencies */,
 			);
 			productName = FlickrImage;
 			productReference = 0845C79E2B74E7510079EAAB /* FlickrApp.app */;
@@ -539,7 +579,6 @@
 			);
 			mainGroup = 0845C7952B74E7510079EAAB;
 			packageReferences = (
-				0845C81C2B74F13F0079EAAB /* XCRemoteSwiftPackageReference "swift-dependencies" */,
 				0845C8D42B762C870079EAAB /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 			);
 			productRefGroup = 0845C79F2B74E7510079EAAB /* Products */;
@@ -586,16 +625,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				0845C8592B755C380079EAAB /* PhotoGrid.swift in Sources */,
+				08F62FB32B8936A800038E04 /* Routable.swift in Sources */,
 				0845C8202B74F1B00079EAAB /* AppEnvironment.swift in Sources */,
+				08F62FA82B892BC400038E04 /* ScreenFactory.swift in Sources */,
+				08444A4B2B87DE800047FE66 /* FlickrApp.swift in Sources */,
 				0845C81E2B74F1640079EAAB /* APIClient.swift in Sources */,
 				08329A3B2B8642BD00A9FCC6 /* AppCoordinator.swift in Sources */,
+				08F62FAD2B892D2000038E04 /* CoordinatorFactoryProtocol.swift in Sources */,
+				08F62F9E2B8898E600038E04 /* HomeViewState.swift in Sources */,
 				08A61B312B7E8A44009FC942 /* PersistenceProvider.swift in Sources */,
+				08F62FA02B88A34F00038E04 /* HomeCoordinatorView.swift in Sources */,
 				08A61B2F2B7E8689009FC942 /* Logger.swift in Sources */,
 				0845C8852B75AD320079EAAB /* Flickr.xcdatamodeld in Sources */,
 				0845C8352B75005D0079EAAB /* Parser.swift in Sources */,
-				08329A372B86401300A9FCC6 /* NavigationRouter.swift in Sources */,
+				08F62FA62B89230D00038E04 /* AppFactory.swift in Sources */,
 				0845C8822B75A9C00079EAAB /* HistoryView.swift in Sources */,
-				08329A3F2B86456200A9FCC6 /* SceneDelegate.swift in Sources */,
 				0845C8392B7508430079EAAB /* HomeView.swift in Sources */,
 				0845C8292B74F7660079EAAB /* FlickerService+Live.swift in Sources */,
 				0845C8542B7551060079EAAB /* FetchPhotosUseCase.swift in Sources */,
@@ -603,21 +647,24 @@
 				0845C8262B74F65E0079EAAB /* FlickrService.swift in Sources */,
 				0845C83B2B7508830079EAAB /* HomeViewModel.swift in Sources */,
 				0845C82B2B74F8BF0079EAAB /* PhotosResponse.swift in Sources */,
-				08329A3D2B86455500A9FCC6 /* AppDelegate.swift in Sources */,
+				08F62FB12B89368F00038E04 /* Coordinator.swift in Sources */,
 				0845C8CC2B75C2A10079EAAB /* DateFormatter.swift in Sources */,
+				08F62F9C2B88975100038E04 /* HomeCoordinatorProtocol.swift in Sources */,
 				0845C82D2B74F95B0079EAAB /* APIError.swift in Sources */,
 				0845C8872B75ADB40079EAAB /* Persistence.swift in Sources */,
 				084AEA6A2B810BE300AFAFB7 /* Item+CoreDataClass.swift in Sources */,
+				08F62FAB2B892CC200038E04 /* ScreenFactoryProtocol.swift in Sources */,
+				08444A4D2B87DF130047FE66 /* AppCoordinatorView.swift in Sources */,
 				0845C84A2B7540420079EAAB /* PhotosResult.swift in Sources */,
 				0845C8222B74F3150079EAAB /* APIEnvironment+Live.swift in Sources */,
 				0845C8192B74F0510079EAAB /* APIRequest.swift in Sources */,
-				08329A352B863FAF00A9FCC6 /* Coordinator.swift in Sources */,
+				08444A492B87A37D0047FE66 /* NetworkMonitor.swift in Sources */,
 				084AEA6B2B810BE300AFAFB7 /* Item+CoreDataProperties.swift in Sources */,
+				08F62F992B87F62300038E04 /* HomeCoordinator.swift in Sources */,
 				0845C8242B74F3220079EAAB /* APIEnvironment.swift in Sources */,
 				0845C84F2B7550C90079EAAB /* PhotosRepository+Live.swift in Sources */,
 				0845C85E2B757B1B0079EAAB /* AppConstants.swift in Sources */,
 				0845C85C2B755EC40079EAAB /* PhotoView.swift in Sources */,
-				08329A392B86403B00A9FCC6 /* NavigationTransitionStyle.swift in Sources */,
 				0845C81B2B74F1160079EAAB /* APIClient+Live.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -632,12 +679,13 @@
 				084AEA6D2B81105000AFAFB7 /* PhotosRepositoryTests.swift in Sources */,
 				08A61B302B7E86CD009FC942 /* Logger.swift in Sources */,
 				08D4ED9E2B80ED2E006B5764 /* APIClientTests.swift in Sources */,
-				08A61B2B2B7D5B97009FC942 /* PresistenceTests.swift in Sources */,
+				08A61B2B2B7D5B97009FC942 /* PersistenceTests.swift in Sources */,
 				08FAE90C2B7695E900FC9FFE /* MockPhotoResponse.swift in Sources */,
 				08A61B342B7E94A8009FC942 /* CombinePublisherTest.swift in Sources */,
 				0845C7B82B74E7520079EAAB /* FlickrAppTests.swift in Sources */,
 				08A61B362B7EE18B009FC942 /* MockFetchPhotosUseCase.swift in Sources */,
 				08D4EDA22B810458006B5764 /* SwiftUI.swift in Sources */,
+				081D2D352B8A31FD0045C778 /* MockCoordinator.swift in Sources */,
 				08D4ED9C2B7FE4E0006B5764 /* MockAPIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -803,7 +851,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -834,7 +882,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -857,7 +905,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Y89LU2A58Y;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.muneer.FlickrImageTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -877,7 +925,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Y89LU2A58Y;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.muneer.FlickrImageTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -896,13 +944,15 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Y89LU2A58Y;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.muneer.FlickrImageUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = FlickrImage;
+				TEST_TARGET_NAME = FlickrApp;
 			};
 			name = Debug;
 		};
@@ -914,13 +964,15 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Y89LU2A58Y;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.muneer.FlickrImageUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = FlickrImage;
+				TEST_TARGET_NAME = FlickrApp;
 			};
 			name = Release;
 		};
@@ -966,14 +1018,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		0845C81C2B74F13F0079EAAB /* XCRemoteSwiftPackageReference "swift-dependencies" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pointfreeco/swift-dependencies";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.2.1;
-			};
-		};
 		0845C8D42B762C870079EAAB /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing";
@@ -985,11 +1029,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		0845C82F2B74FBFC0079EAAB /* Dependencies */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0845C81C2B74F13F0079EAAB /* XCRemoteSwiftPackageReference "swift-dependencies" */;
-			productName = Dependencies;
-		};
 		08A61B242B7D3FE5009FC942 /* SnapshotTesting */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0845C8D42B762C870079EAAB /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;

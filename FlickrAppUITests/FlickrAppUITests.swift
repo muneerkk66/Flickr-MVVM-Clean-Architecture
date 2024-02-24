@@ -8,17 +8,43 @@
 import XCTest
 
 final class FlickrAppUITests: XCTestCase {
+    var app: XCUIApplication!
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        app = XCUIApplication()
+        app.launch()
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+    }
+
+    func testNavigationBarButtonTapped() throws {
+        // Navigate to the HomeView
+        let photosNavigationBar = app.navigationBars["Photos"]
+        XCTAssertTrue(photosNavigationBar.exists)
+
+        // Tap on the clock button
+        let clockButton = photosNavigationBar.buttons["Clock"]
+        XCTAssertTrue(clockButton.exists)
+        clockButton.tap()
+
+        let historyScreen = app.navigationBars["History"]
+        XCTAssertTrue(historyScreen.exists)
+    }
+
+    func testSearchFunctionality() throws {
+        // Navigate to the HomeView
+        let photosNavigationBar = app.navigationBars["Photos"]
+        XCTAssertTrue(photosNavigationBar.exists)
+
+        let searchField = app.searchFields.element
+        XCTAssertTrue(searchField.exists)
+        searchField.tap()
+        searchField.typeText("Your search text")
+
+        XCTAssertEqual(searchField.value as? String, "Your search text")
+
     }
 
     func testExample() throws {

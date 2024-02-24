@@ -6,7 +6,6 @@
 //
 
 import Combine
-import Dependencies
 @testable import FlickrApp
 import XCTest
 

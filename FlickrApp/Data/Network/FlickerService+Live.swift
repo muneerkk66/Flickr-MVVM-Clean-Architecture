@@ -6,11 +6,10 @@
 //
 
 import Combine
-import Dependencies
 import Foundation
 
 final class FlickrServiceLive {
-    @Dependency(\.apiClient) private var apiClient
+    private var apiClient: APIClient
 
     enum Endpoint {
         case fetchPhotos
@@ -20,6 +19,10 @@ final class FlickrServiceLive {
                 return "/services/rest/"
             }
         }
+    }
+
+    init(apiClient: APIClient) {
+        self.apiClient = apiClient
     }
 }
 

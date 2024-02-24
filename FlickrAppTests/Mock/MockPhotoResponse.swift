@@ -9,23 +9,23 @@ import Foundation
 @testable import FlickrApp
 
 struct MockData {
-    static let photoMock = Photo(
+    static let photo = Photo(
         photoID: "53534422806",
         secret: "485f97db18",
         server: "65535",
         farm: 66
     )
 
-    static let photosMock = Photos(
+    static let photos = Photos(
         page: 1,
         pages: 1,
         perpage: 1,
         total: 1,
-        photo: [photoMock]
+        photo: [photo]
     )
 
-    static let photosResponseMock = PhotosResponse(
-        photos: photosMock
+    static let photosResponse = PhotosResponse(
+        photos: photos
     )
 
     static let request = APIRequest<PhotosResponse>(
@@ -35,5 +35,7 @@ struct MockData {
                 AppConstants.PhotosRequestQuery.method: AppConstants.photosRequestMethod,
                 AppConstants.PhotosRequestQuery.perPage: String(AppConstants.pageLimit)]
     )
+
+    static let imageUrl = "https://picsum.photos/400/300"
 
 }

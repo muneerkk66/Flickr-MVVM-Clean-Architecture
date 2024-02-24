@@ -6,28 +6,16 @@
 //
 
 import Combine
-import Dependencies
 import Foundation
 
 protocol PhotosRepository {
     @discardableResult
     func fetchPhotos(
-        withText seachText: String,
+        withText searchText: String,
         page: Int
     ) -> AnyPublisher<PhotosResult, APIError>
 
     func saveHistory(
-        withText seachText: String
+        withText searchText: String
     )
-}
-
-private enum PhotosRepositoryKey: DependencyKey {
-    static let liveValue: PhotosRepository = PhotosRepositoryLive()
-}
-
-extension DependencyValues {
-    var photosRepositoryKey: PhotosRepository {
-        get { self[PhotosRepositoryKey.self] }
-        set { self[PhotosRepositoryKey.self] = newValue }
-    }
 }

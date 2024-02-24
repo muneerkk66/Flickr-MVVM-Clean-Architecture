@@ -6,11 +6,14 @@
 //
 
 import Combine
-import Dependencies
 import Foundation
 
 final class APIClientLive: APIClient {
-    @Dependency(\.apiEnvironment) private var apiEnvironment
+    private var apiEnvironment: APIEnvironment
+
+    init(apiEnvironment: APIEnvironment) {
+        self.apiEnvironment = apiEnvironment
+    }
 
     func request<Response>(_ request: APIRequest<Response>) -> AnyPublisher<Response, APIError> {
         do {

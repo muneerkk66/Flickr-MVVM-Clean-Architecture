@@ -6,7 +6,6 @@
 //
 
 import Combine
-import Dependencies
 @testable import FlickrApp
 import XCTest
 import CoreData
@@ -21,11 +20,7 @@ class HomeViewModelTests: XCTestCase {
         super.setUp()
 
         persistenceController = PersistenceController()
-        viewModel = withDependencies {
-            $0.fetchPhotosUseCase = MockFetchPhotosUseCase.success(with: MockData.photosResponseMock)
-        } operation: {
-            HomeViewModel()
-        }
+        viewModel = HomeViewModel(coordinator: MockHomeCoordinator(), fetchPhotosUseCase: MockFetchPhotosUseCase.success(with: MockData.photosResponse))
 
     }
 
@@ -49,17 +44,17 @@ class HomeViewModelTests: XCTestCase {
     func testPhotosLoadMore() {
         viewModel.loadMore()
         XCTAssertTrue(viewModel.photos.isEmpty)
-        XCTAssertEqual(viewModel.state, HomeViewModel.LoadingState.good)
+        XCTAssertEqual(viewModel.state, PhotosLoadingState.good)
     }
 
     func testFetchPhotosSuccess() throws {
         let searchText = "test"
         let exp = XCTestExpectation(description: "TestFetchPhotosSuccess")
-        viewModel.fetchPhotos(seachText: searchText)
+        viewModel.fetchPhotos(searchText: searchText)
         let result = XCTWaiter.wait(for: [exp], timeout: 0.5)
         if result == XCTWaiter.Result.timedOut {
             XCTAssertTrue(viewModel.photos.count > 0)
-            XCTAssertEqual(viewModel.state, HomeViewModel.LoadingState.loadedAll)
+            XCTAssertEqual(viewModel.state, PhotosLoadingState.loadedAll)
             XCTAssertEqual(viewModel.page, 1)
         } else {
             XCTFail("Test Failed: FetchPhotos")
@@ -69,16 +64,12 @@ class HomeViewModelTests: XCTestCase {
     func testFetchPhotosFailure() throws {
         let searchText = "test"
         let exp = XCTestExpectation(description: "TestFetchPhotosFailure")
-        viewModel = withDependencies {
-            $0.fetchPhotosUseCase = MockFetchPhotosUseCase.failure(error: APIError.applicationError)
-        } operation: {
-            HomeViewModel()
-        }
-        viewModel.fetchPhotos(seachText: searchText)
+        viewModel = HomeViewModel(coordinator: MockHomeCoordinator(), fetchPhotosUseCase: MockFetchPhotosUseCase.failure(error: APIError.applicationError))
+        viewModel.fetchPhotos(searchText: searchText)
         let result = XCTWaiter.wait(for: [exp], timeout: 0.5)
         if result == XCTWaiter.Result.timedOut {
             XCTAssertEqual(viewModel.photos.count, 0)
-            XCTAssertEqual(viewModel.state, HomeViewModel.LoadingState.good)
+            XCTAssertEqual(viewModel.state, PhotosLoadingState.error(APIError.applicationError.message))
             XCTAssertEqual(viewModel.page, 0)
         } else {
             XCTFail("Test Failed: FetchPhotos")

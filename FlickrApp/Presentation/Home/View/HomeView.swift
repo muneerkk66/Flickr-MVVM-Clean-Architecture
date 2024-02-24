@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @StateObject var viewModel = HomeViewModel()
-    @EnvironmentObject var coordinator: Coordinator<AppCoordinator>
+    @StateObject var viewModel: HomeViewModel
 
     var body: some View {
         PhotoGridView(viewModel: viewModel)
@@ -17,17 +16,19 @@ struct HomeView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        coordinator.show(.history)
+                        viewModel.handle(.onTapHistory)
                     } label: {
                         Image(systemName: "clock")
                     }
 
                 }
             }
-            .searchable(text: $viewModel.searchText, placement: .navigationBarDrawer(displayMode: .always))
+            .searchable(text: $viewModel.searchText)
+
     }
+
 }
 
 #Preview {
-    HomeView()
+    HomeView(viewModel: HomeViewModel(coordinator: HomeCoordinator(), fetchPhotosUseCase: AppFactory().makeFetchPhotosUseCase()))
 }

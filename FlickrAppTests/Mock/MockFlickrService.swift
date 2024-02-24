@@ -12,7 +12,7 @@ import Network
 // Mock class to replace the actual implementation of FlickrService
 struct MockFlickrService: FlickrService {
     func fetchPhotos(withText name: String, page: Int) -> AnyPublisher<PhotosResponse, APIError> {
-        return  Just(MockData.photosResponseMock)
+        return  Just(MockData.photosResponse)
             .setFailureType(to: APIError.self)
             .eraseToAnyPublisher()
     }

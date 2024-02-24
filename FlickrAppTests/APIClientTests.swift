@@ -6,17 +6,12 @@
 //
 
 import XCTest
-import Dependencies
 @testable import FlickrApp
 
 final class APIClientTests: XCTestCase {
     var model: APIClientLive!
     override func setUpWithError() throws {
-        model = withDependencies {
-            $0.apiEnvironment = MockAPIEnvironment.success()
-        } operation: {
-            APIClientLive()
-        }
+        model = APIClientLive(apiEnvironment: MockAPIEnvironment.success())
     }
 
     override func tearDownWithError() throws {

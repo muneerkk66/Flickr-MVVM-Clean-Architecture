@@ -6,7 +6,6 @@
 //
 
 import Combine
-import Dependencies
 import Foundation
 
 protocol FlickrService {
@@ -14,15 +13,4 @@ protocol FlickrService {
         withText name: String,
         page: Int
     ) -> AnyPublisher<PhotosResponse, APIError>
-}
-
-private enum FlickrServiceKey: DependencyKey {
-    static let liveValue: FlickrService = FlickrServiceLive()
-}
-
-extension DependencyValues {
-    var flickrService: FlickrService {
-        get { self[FlickrServiceKey.self] }
-        set { self[FlickrServiceKey.self] = newValue }
-    }
 }
